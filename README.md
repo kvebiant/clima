@@ -1,6 +1,6 @@
 # clima
 
-A Weather Flutter application.
+A Weather Flutter application using openweather API to get weather data.
 
 ## Getting Started
 
