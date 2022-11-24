@@ -46,7 +46,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: FlatButton(
+        leading: TextButton(
           onPressed: () async {
             var weatherData = await weather.getLocationData();
             updateUI(weatherData);
@@ -164,7 +164,11 @@ class CitySearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestionlist = query.isEmpty ? jabodetabek : city.where((a) => a.startsWith(query)).toList();
+    final suggestionlist = query.isEmpty
+        ? jabodetabek
+        : city
+            .where((a) => a.toLowerCase().startsWith(query.toLowerCase()))
+            .toList();
 
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
